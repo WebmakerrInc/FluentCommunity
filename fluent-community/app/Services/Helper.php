@@ -1912,6 +1912,7 @@ class Helper
         if ($portalSlug) {
             // remove the portal slug from the request uri. Don't use str_replace as it will replace all occurrences
             $requestUri = substr($requestUri, strlen($portalSlug));
+            $requestUri = ltrim($requestUri, '/');
         }
 
         $parts = explode('/', $requestUri);
