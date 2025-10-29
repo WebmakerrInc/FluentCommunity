@@ -5,6 +5,7 @@ namespace FluentCommunity\Modules;
 use FluentCommunity\App\Services\Helper;
 use FluentCommunity\Framework\Foundation\Application;
 use FluentCommunity\Framework\Support\Arr;
+use FluentCommunity\Modules\Welcome\WelcomeModule;
 
 class FeaturesHandler
 {
@@ -165,5 +166,6 @@ class FeaturesHandler
         }
 
         (new \FluentCommunity\Modules\Auth\AuthModdule())->register($app);
+        (new WelcomeModule())->register($app);
     }
 }
