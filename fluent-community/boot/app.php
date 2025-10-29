@@ -67,7 +67,7 @@ return function ($file) {
         if (defined('FLUENT_COMMUNITY_PRO_VERSION')) {
             add_filter('fluent_community/portal_notices', function ($notices) {
                 if (FLUENT_COMMUNITY_MIN_PRO_VERSION !== FLUENT_COMMUNITY_PRO_VERSION && version_compare(FLUENT_COMMUNITY_MIN_PRO_VERSION, FLUENT_COMMUNITY_PRO_VERSION, '>')) {
-                    $updateUrl = admin_url('plugins.php?s=fluent-community&plugin_status=all&fluent-fluent-community-pro-check-update=' . time());
+                    $updateUrl = admin_url('plugins.php?s=fluent-community&plugin_status=all&fluent-community-check-update=' . time());
                     $notices[] = '<div style="padding: 10px; background-color: var(--fcom-primary-bg, white);" class="error"><b>' . esc_html__('Heads UP:', 'fluent-community') . ' </b> ' . esc_html__('FluentCommunityPro Plugin needs to be updated to the latest version.', 'fluent-community') . ' <a href="' . esc_url($updateUrl) . '">' . esc_html__('Click here to update', 'fluent-community') . '</a></div>';
                 }
                 return $notices;

@@ -39,7 +39,7 @@ return function ($file) {
                     if(!\FluentCommunity\App\Services\Helper::isSiteAdmin()) {
                         return $notices;
                     }
-                    $updateUrl = admin_url('plugins.php?s=fluent-community&plugin_status=all&fluent-community_check_update=' . time());
+                    $updateUrl = admin_url('plugins.php?s=fluent-community&plugin_status=all&fluent-community-check-update=' . time());
                     $notices[] = '<div style="padding: 10px;" class="error; background-color: var(--fcom-primary-bg, white);"><b>Heads UP: </b> FluentCommunity Base Plugin needs to be updated to the latest version. <a href="' . esc_url($updateUrl) . '">Click here to update</a></div>';
                 }
                 return $notices;
