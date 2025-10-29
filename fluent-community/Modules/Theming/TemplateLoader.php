@@ -48,6 +48,7 @@ class TemplateLoader
 
         $templates['fluent-community-frame.php'] = __('FluentCommunity Frame', 'fluent-community');
         $templates['fluent-community-frame-full.php'] = __('FluentCommunity Full Width Frame', 'fluent-community');
+        $templates['fluent-community-welcome.php'] = __('Welcome Page', 'fluent-community');
         return $templates;
     }
 
@@ -70,6 +71,7 @@ class TemplateLoader
             $fluentTemplates = [
                 'fluent-community-frame.php',
                 'fluent-community-frame-full.php',
+                'fluent-community-welcome.php',
             ];
 
             $template_slug = apply_filters('fluent_community/template_slug', $template_slug);
