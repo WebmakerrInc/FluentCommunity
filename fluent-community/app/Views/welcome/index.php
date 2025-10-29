@@ -7,6 +7,8 @@ if (!defined('ABSPATH')) {
 /** @var string $cta_url */
 /** @var array $products */
 /** @var string $color_css */
+/** @var string $logo_url */
+/** @var string $portal_url */
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -28,6 +30,98 @@ if (!defined('ABSPATH')) {
             color: var(--fcom-primary-text, #19283a);
             font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fcom-welcome-layout {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fcom-welcome-header {
+            position: sticky;
+            top: 0;
+            z-index: 12;
+            background: rgba(15, 20, 45, 0.8);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .fcom-header-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 1.1rem clamp(1.5rem, 4vw, 3rem);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .fcom-welcome-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .fcom-welcome-logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        .fcom-welcome-nav {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.9rem, 2vw, 1.4rem);
+        }
+
+        .fcom-welcome-nav a {
+            color: rgba(255, 255, 255, 0.82);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .fcom-welcome-nav a:hover,
+        .fcom-welcome-nav a:focus-visible {
+            color: #fff;
+        }
+
+        .fcom-welcome-nav__cta {
+            padding: 0.65rem 1.35rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.55) 100%);
+            color: #1f2b46;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.25);
+        }
+
+        .fcom-welcome-nav__cta:hover,
+        .fcom-welcome-nav__cta:focus-visible {
+            color: #10172a;
+        }
+
+        @media (max-width: 720px) {
+            .fcom-header-inner {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .fcom-welcome-nav {
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .fcom-welcome-nav__cta {
+                flex-basis: 100%;
+                text-align: center;
+            }
         }
 
         .fcom-welcome-page {
@@ -36,6 +130,10 @@ if (!defined('ABSPATH')) {
             flex-direction: column;
             gap: clamp(3rem, 4vw, 4rem);
             padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem) clamp(4rem, 6vw, 5rem);
+            flex: 1;
+            max-width: 1180px;
+            width: 100%;
+            margin: 0 auto;
         }
 
         .fcom-welcome-hero {
@@ -308,7 +406,7 @@ if (!defined('ABSPATH')) {
             line-height: 1.6;
         }
 
-        .fcom-welcome-footer {
+        .fcom-welcome-product-links {
             margin-top: clamp(2.5rem, 4vw, 3rem);
             padding: 2.4rem;
             border-radius: 24px;
@@ -322,16 +420,70 @@ if (!defined('ABSPATH')) {
             box-shadow: 0 20px 50px rgba(16, 24, 40, 0.08);
         }
 
-        .fcom-welcome-footer a {
+        .fcom-welcome-product-links a {
             color: inherit;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.2s ease;
         }
 
-        .fcom-welcome-footer a:hover,
-        .fcom-welcome-footer a:focus-visible {
+        .fcom-welcome-product-links a:hover,
+        .fcom-welcome-product-links a:focus-visible {
             color: var(--fcom-text-link, #2271b1);
+        }
+
+        .fcom-welcome-footer {
+            background: rgba(10, 13, 32, 0.92);
+            color: rgba(255, 255, 255, 0.78);
+            padding: clamp(2.5rem, 4vw, 3.5rem) clamp(1.5rem, 5vw, 3rem);
+            margin-top: auto;
+        }
+
+        .fcom-footer-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+        }
+
+        @media (min-width: 900px) {
+            .fcom-footer-inner {
+                grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+                align-items: center;
+            }
+        }
+
+        .fcom-footer-cta h4 {
+            margin: 0 0 0.85rem;
+            font-size: clamp(1.6rem, 2.5vw, 2rem);
+            color: #fff;
+        }
+
+        .fcom-footer-cta p {
+            margin: 0 0 1.35rem;
+            font-size: 1.05rem;
+        }
+
+        .fcom-footer-links {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .fcom-footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .fcom-footer-links a:hover,
+        .fcom-footer-links a:focus-visible {
+            color: #fff;
+        }
+
+        .fcom-footer-copy {
+            margin: 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         @media (max-width: 599px) {
@@ -343,15 +495,31 @@ if (!defined('ABSPATH')) {
                 padding: 2.25rem;
             }
 
-            .fcom-welcome-footer {
+            .fcom-welcome-product-links {
                 padding: 2rem;
             }
         }
     </style>
 </head>
 <body <?php body_class('fcom-welcome-body'); ?>>
-<main class="fcom-welcome-page" role="main">
-    <section class="fcom-welcome-hero">
+<div class="fcom-welcome-layout">
+    <header class="fcom-welcome-header" role="banner">
+        <div class="fcom-header-inner">
+            <a class="fcom-welcome-logo" href="<?php echo esc_url($portal_url); ?>">
+                <?php if (!empty($logo_url)) : ?>
+                    <img src="<?php echo esc_url($logo_url); ?>" alt="<?php esc_attr_e('Fluent Community', 'fluent-community'); ?>">
+                <?php endif; ?>
+                <span><?php esc_html_e('Fluent Community', 'fluent-community'); ?></span>
+            </a>
+            <nav class="fcom-welcome-nav" aria-label="<?php esc_attr_e('Fluent Community primary navigation', 'fluent-community'); ?>">
+                <a href="#fcom-ecosystem"><?php esc_html_e('Products', 'fluent-community'); ?></a>
+                <a href="#fcom-suite"><?php esc_html_e('Fluent Suite', 'fluent-community'); ?></a>
+                <a class="fcom-welcome-nav__cta" href="<?php echo esc_url($cta_url); ?>"><?php esc_html_e('Get Fluent Suite', 'fluent-community'); ?></a>
+            </nav>
+        </div>
+    </header>
+    <main class="fcom-welcome-page" role="main">
+        <section class="fcom-welcome-hero" id="fcom-hero">
         <div class="fcom-hero-inner">
             <p class="fcom-hero-eyebrow"><?php esc_html_e('Fluent Suite', 'fluent-community'); ?></p>
             <h1 class="fcom-hero-title"><?php echo esc_html($title); ?></h1>
@@ -366,7 +534,9 @@ if (!defined('ABSPATH')) {
         </div>
     </section>
 
-    <section aria-labelledby="fcom-ecosystem" class="fcom-welcome-products">
+        </section>
+
+        <section aria-labelledby="fcom-ecosystem" class="fcom-welcome-products">
         <div class="fcom-section-heading">
             <h2 id="fcom-ecosystem"><?php esc_html_e('Powerful tools for every team', 'fluent-community'); ?></h2>
             <p><?php esc_html_e('Each Fluent product is crafted to work beautifully on its own — and even better together. Build automated funnels, deliver world-class support, and scale revenue without leaving WordPress.', 'fluent-community'); ?></p>
@@ -402,7 +572,9 @@ if (!defined('ABSPATH')) {
         </div>
     </section>
 
-    <section class="fcom-suite-summary" aria-labelledby="fcom-suite">
+        </section>
+
+        <section class="fcom-suite-summary" aria-labelledby="fcom-suite">
         <div class="fcom-suite-summary__content">
             <h3 id="fcom-suite"><?php esc_html_e('The Fluent way to run your business', 'fluent-community'); ?></h3>
             <p><?php esc_html_e('From email marketing and eCommerce to bookings and affiliate management, Fluent Suite keeps every workflow inside WordPress. Automate the busy work, personalize every touchpoint, and keep your teams in sync.', 'fluent-community'); ?></p>
@@ -445,15 +617,39 @@ if (!defined('ABSPATH')) {
         </div>
     </section>
 
-    <footer class="fcom-welcome-footer">
+        </section>
+
+        <section class="fcom-welcome-product-links">
         <span><?php esc_html_e('Explore the Fluent ecosystem:', 'fluent-community'); ?></span>
         <?php foreach ($products as $product) : ?>
             <a href="<?php echo esc_url($product['url']); ?>" target="_blank" rel="noopener">
                 <?php echo esc_html($product['name']); ?>
             </a>
         <?php endforeach; ?>
+        </section>
+    </main>
+    <footer class="fcom-welcome-footer" role="contentinfo">
+        <div class="fcom-footer-inner">
+            <div class="fcom-footer-cta">
+                <h4><?php esc_html_e('Ready to build with Fluent?', 'fluent-community'); ?></h4>
+                <p><?php esc_html_e('Join thousands of businesses using Fluent tools to automate growth and deliver standout customer experiences.', 'fluent-community'); ?></p>
+                <a class="fcom-btn" href="<?php echo esc_url($cta_url); ?>">
+                    <?php esc_html_e('Start Your Fluent Journey', 'fluent-community'); ?>
+                </a>
+            </div>
+            <div class="fcom-footer-links" aria-label="<?php esc_attr_e('Fluent product links', 'fluent-community'); ?>">
+                <?php foreach ($products as $product) : ?>
+                    <a href="<?php echo esc_url($product['url']); ?>" target="_blank" rel="noopener">
+                        <?php echo esc_html($product['name']); ?>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+            <p class="fcom-footer-copy">
+                &copy; <?php echo esc_html(date_i18n('Y')); ?> <?php bloginfo('name'); ?>. <?php esc_html_e('All rights reserved.', 'fluent-community'); ?>
+            </p>
+        </div>
     </footer>
-</main>
+</div>
 <?php wp_footer(); ?>
 </body>
 </html>
