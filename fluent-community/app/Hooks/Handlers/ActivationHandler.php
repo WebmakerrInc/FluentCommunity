@@ -33,6 +33,7 @@ class ActivationHandler
         $slug = Helper::getPortalSlug();
         add_rewrite_rule('^' . $slug . '/?$', 'index.php?fcom_route=portal_home', 'top'); // For /hooks
         add_rewrite_rule('^' . $slug . '/(.+)/?', 'index.php?fcom_route=$matches[1]', 'top');
+        add_rewrite_rule('^welcome/?$', 'index.php?fcom_welcome=1', 'top');
         // flush rewrite rules
         flush_rewrite_rules(true);
 

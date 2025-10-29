@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 (new \FluentCommunity\App\Hooks\Handlers\PortalHandler())->register();
 (new \FluentCommunity\App\Hooks\Handlers\CustomizerHander())->register();
 (new \FluentCommunity\App\Hooks\Handlers\PortalSettingsHandler())->register();
+(new \FluentCommunity\App\Hooks\Handlers\WelcomePageHandler())->register();
 (new \FluentCommunity\App\Hooks\Handlers\NotificationEventHandler())->register();
 (new \FluentCommunity\App\Hooks\Handlers\EmailNotificationHandler())->register();
 (new \FluentCommunity\App\Hooks\Handlers\ActivityMonitorHandler())->register();
