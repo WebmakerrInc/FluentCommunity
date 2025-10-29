@@ -215,7 +215,7 @@ class Updater
             return $_data;
         }
 
-        if (!in_array($_args->slug, [$this->slug, 'fluent-community-pro'])) {
+        if (!in_array($_args->slug, [$this->slug, 'fluent-community'])) {
             return $_data;
         }
 
@@ -360,7 +360,7 @@ class Updater
             $this->delete_transients();
         }
 
-        if (isset($_GET['fluent-community-pro-check-update'])) {
+        if (isset($_GET['fluent-community-check-update'])) {
             if (current_user_can('update_plugins')) {
                 $this->delete_transients();
 
