@@ -4,6 +4,7 @@ namespace FluentCommunity\Modules\Welcome;
 
 use FluentCommunity\App\App;
 use FluentCommunity\App\Functions\Utility;
+use FluentCommunity\App\Services\Helper;
 
 class WelcomeModule
 {
@@ -95,6 +96,8 @@ class WelcomeModule
             'cta_url'     => $ctaUrl,
             'products'    => $products,
             'color_css'   => Utility::getColorCssVariables(),
+            'logo_url'    => FLUENT_COMMUNITY_PLUGIN_URL . 'assets/images/logo.png',
+            'portal_url'  => Helper::baseUrl('/'),
         ];
 
         status_header(200);
