@@ -2,6 +2,10 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+if (function_exists('wp_enqueue_block_template_skip_link')) {
+    wp_enqueue_block_template_skip_link();
+}
 /** @var string $title */
 /** @var string $description */
 /** @var string $cta_url */
