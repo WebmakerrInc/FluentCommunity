@@ -5,6 +5,7 @@ namespace FluentCommunity\Modules\Welcome;
 use FluentCommunity\App\App;
 use FluentCommunity\App\Functions\Utility;
 use FluentCommunity\App\Services\Helper;
+use FluentCommunity\Framework\Support\Arr;
 
 class WelcomeModule
 {
@@ -90,13 +91,26 @@ class WelcomeModule
 
         $ctaUrl = 'https://fluentcrm.com/fluent-suite/';
 
+        $settings = Helper::generalSettings();
+        $logoUrl = Arr::get($settings, 'logo');
+        $whiteLogoUrl = Arr::get($settings, 'white_logo');
+
+        if (!$logoUrl) {
+            $logoUrl = FLUENT_COMMUNITY_PLUGIN_URL . 'assets/images/logo.png';
+        }
+
+        if (!$whiteLogoUrl) {
+            $whiteLogoUrl = $logoUrl;
+        }
+
         $viewData = [
             'title'       => $title,
             'description' => $description,
             'cta_url'     => $ctaUrl,
             'products'    => $products,
             'color_css'   => Utility::getColorCssVariables(),
-            'logo_url'    => FLUENT_COMMUNITY_PLUGIN_URL . 'assets/images/logo.png',
+            'logo_url'    => $logoUrl,
+            'white_logo_url' => $whiteLogoUrl,
             'portal_url'  => Helper::baseUrl('/'),
         ];
 
