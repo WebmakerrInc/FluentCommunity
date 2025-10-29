@@ -30,6 +30,13 @@ return function ($file) {
     require_once FLUENT_COMMUNITY_PLUGIN_DIR . 'vendor/woocommerce/action-scheduler/action-scheduler.php';
     require_once FLUENT_COMMUNITY_PLUGIN_DIR . 'app/Functions/helpers.php';
 
+    if (!function_exists('get_current_screen')) {
+        $screenFile = ABSPATH . 'wp-admin/includes/screen.php';
+        if (file_exists($screenFile)) {
+            require_once $screenFile;
+        }
+    }
+
     if (file_exists(FLUENT_COMMUNITY_PLUGIN_DIR . 'Modules/modules_init.php')) {
         require_once FLUENT_COMMUNITY_PLUGIN_DIR . 'Modules/modules_init.php';
     }

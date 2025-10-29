@@ -16,7 +16,13 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2.0,user-scalable=yes,viewport-fit=cover"/>
     <meta name="mobile-web-app-capable" content="yes">
-    <?php if (!$isHeadless) : wp_head(); else: ?>
+    <?php
+    if (!$isHeadless) :
+        if (function_exists('wp_enqueue_block_template_skip_link')) {
+            wp_enqueue_block_template_skip_link();
+        }
+        wp_head();
+    else: ?>
         <meta name="description" content="<?php echo esc_attr($description); ?>">
         <link rel="icon" type="image/x-icon" href="<?php echo esc_url(get_site_icon_url()); ?>"/>
         <link rel="apple-touch-icon" href="<?php echo esc_url(get_site_icon_url()); ?>"/>

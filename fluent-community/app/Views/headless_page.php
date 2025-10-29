@@ -20,6 +20,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"/>
     <?php
     if (!empty($load_wp)) :
+        if (function_exists('wp_enqueue_block_template_skip_link')) {
+            wp_enqueue_block_template_skip_link();
+        }
         wp_head();
     else: ?>
         <meta name="mobile-web-app-capable" content="yes">
